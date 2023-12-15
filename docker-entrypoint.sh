@@ -24,7 +24,7 @@ while true; do
   /sbin/iptables-restore --test < /tmp/iptables-country
   /sbin/iptables-restore --counters < /tmp/iptables-country
   grep -e '^#' /tmp/iptables-country
-  sleep 365d
+  sleep 30d
   echo "# Updating IP blocks from ipdeny.com"
   for c in ${COUNTRY_CODES}; do \
     wget -O /zones/$c.zone -nv http://www.ipdeny.com/ipblocks/data/aggregated/$c-aggregated.zone; \

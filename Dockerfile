@@ -13,4 +13,3 @@ RUN set -ex; mkdir -p /zones; \
 ENV COUNTRY_CODES=${FW_COUNTRY_CODES}
 
 ENTRYPOINT ["/docker-entrypoint.sh"]
-CMD ["confd"]
