@@ -24,6 +24,21 @@ docker build . -t my-firewall --build-arg 'FW_COUNTRY_CODES=ru cn sa ua'
 docker run -d --cap-add NET_ADMIN --network host --restart unless-stopped --name my-firewall my-firewall
 ```
 
+Or with Docker Compose:
+
+```
+version: '3'
+
+services:
+  my-firewall:
+    image: ghcr.io/colinmollenhour/docker-ipdeny:main
+    container_name: my-firewall
+    cap_add:
+      - NET_ADMIN
+    network_mode: host
+    restart: unless-stopped
+```
+
 ## Build Args
 
 - `FW_COUNTRY_CODES=ru cn` - Required. Space-separated list of lowercase two-character country codes to block.
