@@ -1,7 +1,7 @@
 FROM alpine:latest
 
 # ca-certificates is needed if using SSL but not client certificates
-RUN apk add --no-cache --update iptables wget
+RUN apk add --no-cache --update iptables ipset wget
 
 COPY *.sh /
 
