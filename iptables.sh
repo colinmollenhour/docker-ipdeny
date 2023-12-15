@@ -31,11 +31,10 @@ if [[ "$USE_IPSET" = "1" ]]; then
     echo -A ${chain} -m set --match-set country_$name src -j $deny
     echo -I INPUT    -m set --match-set country_$name src -j $deny
     echo -I FORWARD  -m set --match-set country_$name src -j $deny
-    ipset -L country_$name >/dev/null 2>&1
-    if [ $? -ne 0 ]; then
-      ipset -N country_$name hash:net
-    else
+    if ipset -L country_$name >/dev/null 2>&1; then
       ipset flush country_$name
+    else
+      ipset -N country_$name hash:net
     fi
     while read cidr; do
       ipset -A country_$name $cidr
