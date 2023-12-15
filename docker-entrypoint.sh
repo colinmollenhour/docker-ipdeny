@@ -2,7 +2,7 @@
 
 set -e
 
-trap 'cleanup' SIGTERM SIGINT
+trap 'cleanup' TERM INT
 
 function cleanup {
   echo "# Trapped exit signal, cleaning up..."
@@ -14,10 +14,7 @@ function cleanup {
 }
 
 if [[ -z $USE_IPSET ]]; then
-  USE_IPSET=0
-  if command -v ipset 2>&1 >/dev/null; then
-    USE_IPSET=1
-  fi
+  USE_IPSET=1
 fi
 export USE_IPSET
 
@@ -29,8 +26,7 @@ while true; do
   grep -e '^#' /tmp/iptables-country
   sleep 365d
   echo "# Updating IP blocks from ipdeny.com"
-  for c in ${FW_COUNTRY_CODES}; do \
+  for c in ${COUNTRY_CODES}; do \
     wget -O /zones/$c.zone -nv http://www.ipdeny.com/ipblocks/data/aggregated/$c-aggregated.zone; \
   done
-
 done

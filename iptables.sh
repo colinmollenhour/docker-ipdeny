@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -e
+
 target=DOCKER-USER
 chain=DOCKER-USER-COUNTRY
 deny=${FW_DENY:-REJECT}
