@@ -27,6 +27,6 @@ while true; do
   sleep 30d
   echo "# Updating IP blocks from ipdeny.com"
   for c in ${COUNTRY_CODES}; do \
-    wget -O /zones/$c.zone -nv http://www.ipdeny.com/ipblocks/data/aggregated/$c-aggregated.zone; \
+    wget -O /zones/$c.zone -nv https://www.ipdeny.com/ipblocks/data/aggregated/$c-aggregated.zone; \
   done
 done
