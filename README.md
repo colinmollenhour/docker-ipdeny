@@ -1,4 +1,4 @@
-Block all IPs from the given countries using iptables and ipset if available.
+Block all IPs from the given countries using iptables and ipset, if available.
 
 - Refreshes data every 30 days from ipdeny.com.
 - Pre-built image blocks only Russia and China. Build your own to customize.
